@@ -20,8 +20,10 @@
     // Perform the redirection if a URL is specified
     if (targetURL) {
       window.location.href = targetURL;
-    }
+    } else {
+      // Close the webpage if no URL is specified
       window.close();
+    }
   </script>
 </head>
 <body>
