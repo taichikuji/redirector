@@ -17,12 +17,11 @@
     // Get the value of the "url" parameter from the URL
     var targetURL = getParameterByName('url');
 
-    // Perform the redirection
+    // Perform the redirection if a URL is specified
     if (targetURL) {
       window.location.href = targetURL;
-    } else {
-      document.write("No target URL specified.");
     }
+      window.close();
   </script>
 </head>
 <body>
