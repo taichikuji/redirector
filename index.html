@@ -3,27 +3,24 @@
 <head>
   <title>URL Redirection</title>
   <script>
-    // Function to extract the URL parameter from the current URL
-    function getParameterByName(name, url) {
-      if (!url) url = window.location.href;
-      name = name.replace(/[[\]]/g, '\\$&');
-      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-          results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
+    // Get the current URL's query parameters
+    const queryParams = new URLSearchParams(window.location.search);
 
-    // Get the value of the "url" parameter from the URL
-    var targetURL = getParameterByName('url');
+    // Get the value of the "url" parameter
+    const targetURL = queryParams.get('url');
 
     // Perform the redirection if a URL is specified
     if (targetURL) {
       window.location.href = targetURL;
+    } else {
+      alert('No URL provided for redirection.');
+      window.onload = function() {
+        document.body.innerHTML = '<h1>Error</h1><p>No URL provided for redirection.</p>';
+      };
     }
   </script>
 </head>
 <body>
-  URL not found. Please close and try again! If problems persist, please DM @shuusai on discord!
+  <p>If you are seeing this, either Javascript is disabled, or something went wrong. Contact <a href="https://discordid.taichikuji.org/discord">@Taichums</a></p>
 </body>
 </html>
